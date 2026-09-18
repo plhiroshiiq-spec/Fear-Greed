@@ -30,6 +30,10 @@ core/                                 純Kotlin。Android非依存。Gradleで�
   PanelState.kt       描画に渡す状態、折りたたみ行(6.3章)、展開条件(6.2章)
   FgLoader.kt         取得失敗時にキャッシュへ落とす判断(機内モードの検収)
   DisplayControl.kt   枠の出し分け(6章)。完全非表示は手動オフの時だけ
+  Position.kt         建玉とSL規則の型(9.1章)
+  SlWatch.kt          割れ判定と最短距離、表示文字列(9.1章)
+  SlRuleEngine.kt     SLの自動更新。**絶対に下げない**不変条件を持つ(9.1章)
+  RakutenCsv.kt       楽天証券CSVの取り込みと消し込み。ヘッダは候補名で探す
   IsoTime.kt          generated_at の解釈(java.time 非依存)
 
 android/                              SUMI DECK に貼り込むソース。ここではビルドしない
@@ -44,10 +48,13 @@ android/                              SUMI DECK に貼り込むソース。こ�
     FgText.kt           Material非依存の最小テキスト
     FgHome.kt           常設2枠のレイアウト。出し分けは DisplayControl に従う(6章)
     FgSettingsScreen.kt 設定画面(6.1章 手動オン/オフ、6.2章、5.3章の3段階)
+    SlWatchPanel.kt     可変枠 SL WATCH の表示(9.1章)
+    PositionForm.kt     建玉の追加フォームと終値の手入力(9.1章)
   com/sumideck/fg/data/
     FgRepository.kt     取得とキャッシュの組み立て。判断は core の FgLoader に寄せてある
     HttpFgRemoteSource.kt  raw URL を叩くだけの実装
     SettingsStore.kt    表示設定の保存先(DataStore で実装する)
+    PositionStore.kt    建玉と終値の保存先。**端末内 DataStore のみ**(9.1章)
 ```
 
 ## テストの実行
@@ -83,3 +90,6 @@ Maven Central がバースト取得に 429 を返すことがあるため `gradl
 - **丸めは切り捨て**(P1で確定、docs/rounding.md)。`kotlin.math.round` を使わない。
 - **完全非表示は手動オフの時だけ**(6.1章)。stale・欠損・平常時では消さない。
 - **常設は2枠**(0章 / 7章)。7章の除外リストを善意で追加しない。
+- **SLを自動で下げない**(9.1章)。`SlRuleEngine` の `max(現在のSL, 候補)` を外さない。
+- **建玉は端末の外に出さない**(9.1章)。`PositionStore` にネットワーク実装を足さない。
+- **終値未入力を割れ0件に混ぜない**(docs/spec_diff.md D15)。

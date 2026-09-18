@@ -14,3 +14,6 @@ venv/
 sumideck/**/build/
 .gradle/
 sumideck/.gradle/
+
+# 建玉は端末内 DataStore のみ(SPEC.md 9.1章)。リポジトリには置かない
+positions.json

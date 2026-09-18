@@ -75,7 +75,7 @@ object PanelBuilder {
     }
 
     /** `2026-09-16` → `09/16`。読めなければ null。 */
-    internal fun shortDate(iso: String): String? {
+    fun shortDate(iso: String): String? {
         val parts = iso.trim().take(10).split("-")
         if (parts.size != 3) return null
         return "${parts[1]}/${parts[2]}"
