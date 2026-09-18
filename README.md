@@ -27,7 +27,7 @@ tests/               pytest。入力は合成データのみ
 | `data/history_us.csv` | `date, score, 各要素score` の追記保存 |
 | `data/failure_state.json` | 連続失敗カウンタ(engine 内部用) |
 | `data/rounding_probe.csv` | 丸め規則の照合用の観測 |
-| `data/ext.json` | EXT(SOX指数の前日比%)。SPEC.md 9.2章 |
+| `data/ext.json` | EXT(SPEC.md 9.2章)。**見送り中**のため生成されない |
 
 **CNN の生データは保存しない**(SPEC.md 8章)。置くのはスコアと派生統計だけで、
 `tools/check_no_raw_data.py` が CI で機械的に確認する。
@@ -38,7 +38,7 @@ tests/               pytest。入力は合成データのみ
 pip install -r requirements-dev.txt
 python -m pytest -q          # テスト
 python -m fg.build_json -v   # data/fg.json を更新
-python -m fg.ext -v          # data/ext.json を更新(任意)
+python -m fg.ext -v          # data/ext.json を更新(見送り中。docs/ext_source.md)
 ```
 
 ## スケジュール (SPEC.md 4章)
@@ -57,5 +57,6 @@ python -m fg.ext -v          # data/ext.json を更新(任意)
 - 丸め規則は **切り捨て(floor)** で確定(2026-09-18)。→ [docs/rounding.md](docs/rounding.md)
 - `history` の日次値と `previous_close` のずれ(`streak` に影響)→ [docs/spec_diff.md](docs/spec_diff.md) D8 / D10
 - EXT の取得失敗時は **枠を残して値を出さない**(2026-09-18 決定)→ [docs/spec_diff.md](docs/spec_diff.md) D16
-- 終値ソースの選定 → [docs/price_source.md](docs/price_source.md) / EXT → [docs/ext_source.md](docs/ext_source.md)
+- EXT は **見送り中**(使える無料ソースが無い)→ [docs/ext_source.md](docs/ext_source.md)
+- 終値ソースの選定 → [docs/price_source.md](docs/price_source.md)
 - 仕様との差分 → [docs/spec_diff.md](docs/spec_diff.md)
