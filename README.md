@@ -47,7 +47,8 @@ python -m fg.build_json -v   # data/fg.json を更新
 既存の `fg.json` を残したまま `stale:true` だけ立てて終了コード0。
 3回連続で失敗したときだけワークフローを失敗させる(GitHubからメールが飛ぶ)。
 
-## 未了
+## 確定事項と残課題
 
-- 丸め規則(四捨五入 / 切り捨て)は**未確定**。暫定は四捨五入。→ [docs/rounding.md](docs/rounding.md)
+- 丸め規則は **切り捨て(floor)** で確定(2026-09-18)。→ [docs/rounding.md](docs/rounding.md)
+- `history` の日次値と `previous_close` のずれ(`streak` に影響)→ [docs/spec_diff.md](docs/spec_diff.md) D8 / D10
 - 仕様との差分 → [docs/spec_diff.md](docs/spec_diff.md)
