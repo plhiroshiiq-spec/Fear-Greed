@@ -3,7 +3,10 @@
 CNN Fear & Greed Index を取得して `data/fg.json`(schema 2)を吐く。
 仕様は [SPEC.md](SPEC.md)(FG ENGINE 仕様書 v2.2)。**米国版のみ・運用費0円**。
 
-現在のフェーズ: **P1(CNN取得 → fg.json → GitHub Actions 稼働)**
+現在のフェーズ: **P2(SUMI DECK 移植)**。P1 は検収済み。
+
+- `fg/` … CNN取得エンジン(Python)。P1
+- `sumideck/` … SUMI DECK 側の実装(Kotlin)。P2。→ [sumideck/README.md](sumideck/README.md)
 
 ## 構成
 
