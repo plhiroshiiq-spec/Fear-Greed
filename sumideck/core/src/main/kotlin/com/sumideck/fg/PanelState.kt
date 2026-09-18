@@ -7,8 +7,11 @@ package com.sumideck.fg
  * (再コンポーズのたびに計算が走らないようにするため。5.2章の検収)。
  */
 data class PanelState(
+    val score: Double?,              // CNNの生値。表示ではなく判定に使う(6.2章)
     val scoreText: String?,          // 整数表示。取得できていなければ null
     val rating: Rating?,
+    val delta: Double?,
+    val streak: Int,
     val deltaText: String?,
     val streakText: String?,
     val markerPosition: Double?,     // 位置の帯の 0..1。score が無ければ null
@@ -49,8 +52,11 @@ object PanelBuilder {
         val stale = (us?.stale ?: true) || isOverdue(doc?.generatedAt, nowEpochSeconds, staleAfterHours)
 
         return PanelState(
+            score = score,
             scoreText = score?.let { Display.toInt(it).toString() },
             rating = Rating.resolve(us?.rating, score),
+            delta = us?.delta,
+            streak = us?.streak ?: 0,
             deltaText = Display.deltaLabel(us?.delta),
             streakText = Display.streakLabel(us?.streak ?: 0),
             markerPosition = score?.let { bandPosition(it) },

@@ -29,6 +29,7 @@ core/                                 純Kotlin。Android非依存。Gradleで�
   Levels.kt           水平線(5.3.2章)と斜線(5.3.3章)、無効化条件3つ、抜けマーカー
   PanelState.kt       描画に渡す状態、折りたたみ行(6.3章)、展開条件(6.2章)
   FgLoader.kt         取得失敗時にキャッシュへ落とす判断(機内モードの検収)
+  DisplayControl.kt   枠の出し分け(6章)。完全非表示は手動オフの時だけ
   IsoTime.kt          generated_at の解釈(java.time 非依存)
 
 android/                              SUMI DECK に貼り込むソース。ここではビルドしない
@@ -41,9 +42,12 @@ android/                              SUMI DECK に貼り込むソース。こ�
     FgTheme.kt          色。**色を使うのは自動描画の線と凡例だけ**(5.3.5章)
     FgDimens.kt         5.1章 / 5.3章の実装寸法をそのまま定数にしたもの
     FgText.kt           Material非依存の最小テキスト
+    FgHome.kt           常設2枠のレイアウト。出し分けは DisplayControl に従う(6章)
+    FgSettingsScreen.kt 設定画面(6.1章 手動オン/オフ、6.2章、5.3章の3段階)
   com/sumideck/fg/data/
     FgRepository.kt     取得とキャッシュの組み立て。判断は core の FgLoader に寄せてある
     HttpFgRemoteSource.kt  raw URL を叩くだけの実装
+    SettingsStore.kt    表示設定の保存先(DataStore で実装する)
 ```
 
 ## テストの実行
@@ -77,3 +81,5 @@ Maven Central がバースト取得に 429 を返すことがあるため `gradl
 - **履歴を埋めない**(5.1章)。60本に満たない日はある分だけ描く。
 - **スイング点が無い期間は線を引かない**(5.3.2章)。直近値や最大最小で代用しない。
 - **丸めは切り捨て**(P1で確定、docs/rounding.md)。`kotlin.math.round` を使わない。
+- **完全非表示は手動オフの時だけ**(6.1章)。stale・欠損・平常時では消さない。
+- **常設は2枠**(0章 / 7章)。7章の除外リストを善意で追加しない。
