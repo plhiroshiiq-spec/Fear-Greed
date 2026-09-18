@@ -10,7 +10,7 @@ import pytest
 import requests
 
 from fg import build_json, cnn
-from synthetic import business_days, make_payload
+from synthetic import business_days, make_payload, ms
 
 NOW = dt.datetime(2026, 9, 18, 6, 41, 12, tzinfo=build_json.JST)
 
@@ -236,3 +236,73 @@ def test_history_regression_is_rejected(tmp_path):
     assert rc == 0
     assert doc["us"]["score"] == 31.0
     assert doc["us"]["stale"] is True
+
+
+# --- 履歴末尾の確定 (docs/spec_diff.md D17) ---------------------------------
+
+def _tail(doc):
+    return [(d, v) for d, v in doc["us"]["history"][-3:]]
+
+
+def test_unconfirmed_tail_is_replaced_with_cnn_own_values():
+    """実測: 配列の末尾2本がどちらも現在値になる。CNN自身の確定値で置き換える。"""
+    days = business_days(dt.date(2026, 9, 18), 5)
+    # 09-17 と 09-18 がどちらも現在値 28.71 になっている状態を再現する。
+    payload = make_payload(days, [31.0, 27.97, 27.31, 28.71, 28.71],
+                           previous_close=28.69, duplicate_last=True)
+    us = build(payload)["us"]
+    assert us["history"][-2][1] == 28.69   # previous_close で確定
+    assert us["history"][-1][1] == 28.71   # score で確定
+    assert us["delta"] == pytest.approx(0.02)
+
+
+def test_streak_is_correct_after_reconciliation():
+    """置き換え前は streak が 0 になってしまう。置き換え後は手計算と一致する。"""
+    days = business_days(dt.date(2026, 9, 18), 5)
+    payload = make_payload(days, [31.0, 27.97, 27.31, 28.71, 28.71], previous_close=28.69)
+    us = build(payload)["us"]
+    # 27.31 → 28.69 → 28.71 の2日連続上昇
+    assert us["streak"] == 2
+    assert us["delta"] > 0            # 符号が streak と一致する
+    assert us["history"][-1][1] > us["history"][-2][1]
+
+
+def test_settled_data_is_left_effectively_unchanged():
+    """米国引け後は配列の末尾も同じ値なので、置き換えても何も変わらない。"""
+    days = business_days(dt.date(2026, 9, 18), 4)
+    payload = make_payload(days, [30.0, 29.0, 28.69, 28.71], previous_close=28.69)
+    us = build(payload)["us"]
+    assert _tail({"us": us}) == [("2026-09-16", 29.0), ("2026-09-17", 28.69), ("2026-09-18", 28.71)]
+    assert us["streak"] == 1
+
+
+def test_tail_not_touched_when_today_is_missing_from_history():
+    """当日の行が無い日は位置関係が読めないので触らない(推測で埋めない)。"""
+    days = business_days(dt.date(2026, 9, 17), 3)
+    payload = make_payload(days, [30.0, 29.0, 28.54], previous_close=28.69)
+    # timestamp を履歴に無い日にずらす
+    payload["fear_and_greed"]["timestamp"] = ms(dt.date(2026, 9, 18), 20)
+    us = build(payload)["us"]
+    assert us["as_of"] == "2026-09-18"
+    assert us["history"][-1] == ["2026-09-17", 28.54]   # そのまま
+
+
+def test_reconciliation_needs_no_previous_close():
+    days = business_days(dt.date(2026, 9, 18), 3)
+    payload = make_payload(days, [30.0, 29.0, 28.71], previous_close=None)
+    payload["fear_and_greed"]["previous_close"] = None
+    us = build(payload)["us"]
+    assert us["prev_close"] is None
+    assert us["delta"] is None
+    assert us["history"][-1][1] == 28.71       # 当日だけ確定させる
+    assert us["history"][-2][1] == 29.0        # 前日は触らない
+
+
+def test_reconciliation_keeps_history_length_and_dates():
+    days = business_days(dt.date(2026, 9, 18), 300)
+    payload = make_payload(days, [50.0 + (i % 7) for i in range(300)], previous_close=44.4)
+    us = build(payload)["us"]
+    assert len(us["history"]) == 260
+    dates = [d for d, _ in us["history"]]
+    assert len(dates) == len(set(dates)) == 260
+    assert dates[-1] == days[-1].isoformat()

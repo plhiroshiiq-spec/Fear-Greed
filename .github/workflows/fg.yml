@@ -37,9 +37,8 @@ jobs:
       - name: Build data/fg.json
         run: python -m fg.build_json -v
 
-      # EXT(SOX指数の前日比%。SPEC.md 9.2章)。任意機能なので fg.json の更新を巻き込まない。
-      - name: Build data/ext.json
-        run: python -m fg.ext -v
+      # EXT(SPEC.md 9.2章)は見送り中。使えるソースが無いため毎日空振りさせない。
+      # 復活させるときはこの下に `python -m fg.ext -v` を戻す(docs/ext_source.md)。
 
       # 丸め規則の照合用の観測(SPEC.md 3章 P1)。確定したら削除してよい。
       - name: Record rounding observation

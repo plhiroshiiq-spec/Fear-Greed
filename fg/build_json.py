@@ -61,6 +61,48 @@ def compute_streak(history: list[tuple[dt.date, float]]) -> int:
     return sign * count
 
 
+def reconcile_tail(
+    history: list[tuple[dt.date, float]],
+    as_of: dt.date,
+    score: float,
+    prev_close: float | None,
+) -> list[tuple[dt.date, float]]:
+    """履歴の末尾2本を、CNN自身の確定値で置き換える。
+
+    SPEC.md 1.3章は「最終行が当日の現在時刻で重複する」ことだけを指摘しているが、実測では
+    **末尾2本がどちらも現在値になる**。2026-09-18 の2回の実行で確認した。
+
+    | 実行 | score | history 09-17 | history 09-18 |
+    |---|---|---|---|
+    | 04:20 UTC | 28.54 | 28.54 | 28.54 |
+    | 08:57 UTC | 28.71 | 28.71 | 28.71 |
+
+    前営業日(09-17)の値が現在値に追従して書き換わっている。放置すると
+    ``streak`` が常に0になり、推移線の右端2点が重複する。
+
+    そこで当日を ``fear_and_greed.score``、前営業日を ``fear_and_greed.previous_close`` で
+    確定させる。**どちらもCNN自身の値**であり、CNNの画面もこの2つを表示している
+    (docs/rounding.md で実測済み)。自前の推測値は一切入れない。
+
+    米国引け後は配列の末尾もこの2値と一致するため、その場合は実質的に何も変わらない。
+    """
+    if not history:
+        return history
+    if history[-1][0] != as_of:
+        # 当日の行がまだ無い。位置関係が読めないので触らない(推測で埋めない)。
+        log.warning(
+            "history tail not aligned with as_of (%s vs %s); left untouched",
+            history[-1][0], as_of,
+        )
+        return history
+
+    out = list(history)
+    out[-1] = (as_of, float(score))
+    if prev_close is not None and len(out) >= 2:
+        out[-2] = (out[-2][0], float(prev_close))
+    return out
+
+
 def _f2(value: Any) -> float | None:
     if value is None or isinstance(value, bool) or not isinstance(value, (int, float)):
         return None
@@ -76,12 +118,15 @@ def build_document(payload: dict, now: dt.datetime | None = None) -> dict:
     now = now or dt.datetime.now(JST)
     fg = payload["fear_and_greed"]
 
-    history = cnn.historical_series(payload)
-    as_of = cnn.to_utc_date(fg["timestamp"]) if fg.get("timestamp") is not None else history[-1][0]
+    raw_history = cnn.historical_series(payload)
+    as_of = cnn.to_utc_date(fg["timestamp"]) if fg.get("timestamp") is not None else raw_history[-1][0]
 
     score = round(float(fg["score"]), 2)
     prev_close = _f2(fg.get("previous_close"))
     delta = None if prev_close is None else round(score - prev_close, 2)
+
+    # 末尾2本は確定していないので、CNN自身の score / previous_close で置き換える。
+    history = reconcile_tail(raw_history, as_of, score, prev_close)
 
     return {
         "schema": SCHEMA,
