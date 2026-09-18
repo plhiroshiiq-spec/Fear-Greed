@@ -33,7 +33,12 @@ class HttpFgRemoteSource(
     }
 
     companion object {
-        const val DEFAULT_URL =
-            "https://raw.githubusercontent.com/plhiroshiiq-spec/Fear-Greed/main/data/fg.json"
+        private const val RAW_BASE =
+            "https://raw.githubusercontent.com/plhiroshiiq-spec/Fear-Greed/main/data"
+
+        const val DEFAULT_URL = "$RAW_BASE/fg.json"
+
+        /** EXT(SOX指数の前日比%。SPEC.md 9.2章)。engine が置いた派生統計だけが入っている。 */
+        const val EXT_URL = "$RAW_BASE/ext.json"
     }
 }

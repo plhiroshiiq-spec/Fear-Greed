@@ -24,6 +24,7 @@ data class PanelState(
     val m1: Double?,
     val y1: Double?,
     val stale: Boolean,
+    val asOf: String?,               // `2026-09-17`。通知の重複判定に使う
     val lastUpdatedLabel: String?,   // stale のときに出す `09/16` 形式
 ) {
     /** 数値が出せない状態か。枠は消さず「— 更新遅延」を出す(6.4章)。 */
@@ -69,6 +70,7 @@ object PanelBuilder {
             m1 = us?.m1,
             y1 = us?.y1,
             stale = stale,
+            asOf = us?.asOf ?: points.lastOrNull()?.date,
             lastUpdatedLabel = points.lastOrNull()?.date?.let { shortDate(it) }
                 ?: us?.asOf?.let { shortDate(it) },
         )

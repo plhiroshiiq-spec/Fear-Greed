@@ -34,6 +34,9 @@ core/                                 純Kotlin。Android非依存。Gradleで�
   SlWatch.kt          割れ判定と最短距離、表示文字列(9.1章)
   SlRuleEngine.kt     SLの自動更新。**絶対に下げない**不変条件を持つ(9.1章)
   RakutenCsv.kt       楽天証券CSVの取り込みと消し込み。ヘッダは候補名で探す
+  ExtModel.kt         ext.json の読み取り(9.2章)。使えない日は値そのものを渡さない
+  VariableSlot.kt     可変枠に何を出すか(9章)。EXT失敗時の方針を切り替えられる
+  RatingChange.kt     区分が変わった日だけの通知判定(P5)
   IsoTime.kt          generated_at の解釈(java.time 非依存)
 
 android/                              SUMI DECK に貼り込むソース。ここではビルドしない
@@ -50,11 +53,14 @@ android/                              SUMI DECK に貼り込むソース。こ�
     FgSettingsScreen.kt 設定画面(6.1章 手動オン/オフ、6.2章、5.3章の3段階)
     SlWatchPanel.kt     可変枠 SL WATCH の表示(9.1章)
     PositionForm.kt     建玉の追加フォームと終値の手入力(9.1章)
+    ExtPanel.kt         可変枠 EXT の1行(9.2章)
+    VariableSlotHost.kt 可変枠の中身を1つだけ出す(9章)
   com/sumideck/fg/data/
     FgRepository.kt     取得とキャッシュの組み立て。判断は core の FgLoader に寄せてある
     HttpFgRemoteSource.kt  raw URL を叩くだけの実装
     SettingsStore.kt    表示設定の保存先(DataStore で実装する)
     PositionStore.kt    建玉と終値の保存先。**端末内 DataStore のみ**(9.1章)
+    RatingChangeNotifier.kt  区分変化の通知。1日1回まで(P5)
 ```
 
 ## テストの実行
@@ -93,3 +99,6 @@ Maven Central がバースト取得に 429 を返すことがあるため `gradl
 - **SLを自動で下げない**(9.1章)。`SlRuleEngine` の `max(現在のSL, 候補)` を外さない。
 - **建玉は端末の外に出さない**(9.1章)。`PositionStore` にネットワーク実装を足さない。
 - **終値未入力を割れ0件に混ぜない**(docs/spec_diff.md D15)。
+- **可変枠は同時に1つだけ**(9章)。SL WATCH と EXT を並べない。
+- **EXTで誤った値を出さない**(9.2章)。stale や欠損の日は数値を渡さない。
+- **通知は区分が変わった日だけ・1日1回**(P5)。権限が無くても表示は止めない。
