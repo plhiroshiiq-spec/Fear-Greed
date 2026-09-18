@@ -1,16 +1,16 @@
 {
   "schema": 2,
-  "generated_at": "2026-09-18T13:20:03+09:00",
+  "generated_at": "2026-09-18T17:57:12+09:00",
   "us": {
     "source": "cnn",
     "as_of": "2026-09-18",
-    "score": 28.54,
+    "score": 28.71,
     "rating": "fear",
     "prev_close": 28.69,
     "w1": 32.69,
     "m1": 54.63,
     "y1": 66.54,
-    "delta": -0.15,
+    "delta": 0.02,
     "streak": 0,
     "components": [
       {
@@ -22,14 +22,14 @@
       {
         "key": "strength",
         "name_ja": "株価の強さ",
-        "score": 2.6,
-        "raw": -3.4552
+        "score": 3.8,
+        "raw": -3.4853
       },
       {
         "key": "breadth",
         "name_ja": "市場の幅",
         "score": 0.0,
-        "raw": 628.6575
+        "raw": 611.2591
       },
       {
         "key": "put_call",
@@ -41,7 +41,7 @@
         "key": "volatility",
         "name_ja": "ボラティリティ",
         "score": 50.0,
-        "raw": 15.44
+        "raw": 15.25
       },
       {
         "key": "junk_bond",
@@ -1055,11 +1055,11 @@
       ],
       [
         "2026-09-17",
-        28.54
+        28.71
       ],
       [
         "2026-09-18",
-        28.54
+        28.71
       ]
     ],
     "stale": false
