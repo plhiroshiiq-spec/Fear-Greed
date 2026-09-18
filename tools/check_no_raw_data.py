@@ -14,7 +14,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 
-ALLOWED = {"fg.json", "history_us.csv", "failure_state.json", "rounding_probe.csv", ".gitkeep"}
+ALLOWED = {"fg.json", "history_us.csv", "failure_state.json", "rounding_probe.csv",
+           "ext.json", ".gitkeep"}
 
 # 1.2章のCNN内部キー。これらが成果物に現れたら生データを持ち込んでいる。
 FORBIDDEN_KEYS = (
@@ -49,6 +50,17 @@ def main() -> int:
         doc = json.loads(text)
         if set(doc) - {"schema", "generated_at", "us"}:
             problems.append(f"data/fg.json に想定外のトップレベルキー: {sorted(set(doc))}")
+
+    ext_json = DATA / "ext.json"
+    if ext_json.exists():
+        doc = json.loads(ext_json.read_text(encoding="utf-8"))
+        if set(doc) - {"schema", "generated_at", "ext"}:
+            problems.append(f"data/ext.json に想定外のトップレベルキー: {sorted(set(doc))}")
+        # 9.2章 / 8章: 保存するのは派生統計(前日比%)だけ。指数の水準は置かない。
+        allowed_ext = {"key", "name_ja", "source", "as_of", "change_pct", "stale"}
+        extra = set(doc.get("ext", {})) - allowed_ext
+        if extra:
+            problems.append(f"data/ext.json の ext に想定外のキー: {sorted(extra)}")
 
     for line in problems:
         print(f"NG: {line}", file=sys.stderr)

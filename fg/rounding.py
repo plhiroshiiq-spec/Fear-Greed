@@ -2,11 +2,14 @@
 
 SPEC.md 1.3章:
     値の精度 … 小数のfloatで配信(例 29.6285714…)
-    表示の丸め規則はP1で複数日照合して確定。CNN画面が29表示だったため
-    切り捨ての可能性がある。確定するまでは四捨五入とし、判明後に統一する。
+    表示の丸め規則はP1で複数日照合して確定。
 
-判明したら ``DISPLAY_RULE`` を書き換えるだけで engine 側の表示が揃う。
-判定の根拠と経緯は docs/rounding.md に記録する。
+**P1で確定済み: 切り捨て(floor)**。2026-09-18 に CNN画面の
+「Previous close / 1 week ago / 1 month ago / 1 year ago」の4値(28.69→28,
+32.69→32, 54.63→54, 66.54→66)と照合して確定した。4つとも小数部が0.5以上で
+判別可能であり、4つとも切り捨てだった。根拠の全文は docs/rounding.md。
+
+``DISPLAY_RULE`` を書き換えるだけで engine 側の表示が揃う。
 SUMI DECK(Kotlin)側も同じ規則を実装すること。
 """
 
@@ -16,8 +19,9 @@ import math
 from decimal import ROUND_HALF_UP, Decimal
 
 #: "round_half_up"(四捨五入) または "floor"(切り捨て)。
-#: SPEC.md 1.3章に従い、確定するまでの暫定値は "round_half_up"。
-DISPLAY_RULE = "round_half_up"
+#: 2026-09-18 に実測で "floor"(切り捨て)と確定した。docs/rounding.md を参照。
+#: SUMI DECK(Kotlin)側もこの規則に合わせること。
+DISPLAY_RULE = "floor"
 
 VALID_RULES = ("round_half_up", "floor")
 
