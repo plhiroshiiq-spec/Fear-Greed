@@ -1,0 +1,11 @@
+# CNNの生データは絶対にコミットしない(SPEC.md 8章)
+*.raw.json
+raw/
+data/raw/
+.cache/
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
