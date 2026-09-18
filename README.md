@@ -56,6 +56,6 @@ python -m fg.ext -v          # data/ext.json を更新(任意)
 
 - 丸め規則は **切り捨て(floor)** で確定(2026-09-18)。→ [docs/rounding.md](docs/rounding.md)
 - `history` の日次値と `previous_close` のずれ(`streak` に影響)→ [docs/spec_diff.md](docs/spec_diff.md) D8 / D10
-- **EXT の取得失敗時に枠を消すか**は仕様内で衝突しており判断待ち → [docs/spec_diff.md](docs/spec_diff.md) D16
+- EXT の取得失敗時は **枠を残して値を出さない**(2026-09-18 決定)→ [docs/spec_diff.md](docs/spec_diff.md) D16
 - 終値ソースの選定 → [docs/price_source.md](docs/price_source.md) / EXT → [docs/ext_source.md](docs/ext_source.md)
 - 仕様との差分 → [docs/spec_diff.md](docs/spec_diff.md)
