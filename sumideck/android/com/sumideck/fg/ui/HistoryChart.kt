@@ -38,8 +38,13 @@ fun HistoryChart(state: PanelState, modifier: Modifier = Modifier) {
         val series = state.series
         if (series.isEmpty()) return@Canvas
 
+        // 最新点の丸(半径3.8dp)が右端で欠けないよう、描画域を半径ぶん内側に取る。
+        // Canvas は既定でクリップするので、右端ちょうどに打つと丸の右半分が消える。
+        val dotRadius = FgDimens.latestDotRadius.toPx()
+        val right = (size.width - dotRadius).coerceAtLeast(0f)
+
         // 1本しか無い日は中央に点だけ打つ。0除算を避ける。
-        val stepX = if (series.size > 1) size.width / (series.size - 1) else 0f
+        val stepX = if (series.size > 1) right / (series.size - 1) else 0f
         fun x(index: Int): Float = if (series.size > 1) stepX * index else size.width / 2f
         fun y(value: Double): Float = (size.height * (1.0 - scale.normalize(value))).toFloat()
 
@@ -64,7 +69,7 @@ fun HistoryChart(state: PanelState, modifier: Modifier = Modifier) {
 
         drawCircle(
             color = FgColors.foreground,
-            radius = FgDimens.latestDotRadius.toPx(),
+            radius = dotRadius,
             center = Offset(x(series.lastIndex), y(series.last())),
         )
     }
