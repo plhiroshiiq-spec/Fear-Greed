@@ -17,7 +17,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from . import cnn
+from . import cnn, long_history
 from .cnn import CnnError, CnnFetchError, CnnValidationError
 
 log = logging.getLogger("fg.build_json")
@@ -296,6 +296,9 @@ def run(data_dir: Path, session=None, sleeper=None, now: dt.datetime | None = No
     write_json(fg_path, doc)
     upsert_history_csv(data_dir / HISTORY_CSV, doc)
     _save_failure_state(data_dir / FAILURE_STATE, 0, None, now)
+
+    # SUMI DECK の詳細チャート用の長い推移(fg_history.json)。失敗しても fg.json は書けているので止めない
+    long_history.update(data_dir, doc, now, **kwargs)
 
     us = doc["us"]
     log.info(
