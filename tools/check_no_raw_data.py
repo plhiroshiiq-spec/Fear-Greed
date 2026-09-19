@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 
-ALLOWED = {"fg.json", "history_us.csv", "failure_state.json", "rounding_probe.csv",
+ALLOWED = {"fg.json", "fg_history.json", "history_us.csv", "failure_state.json", "rounding_probe.csv",
            "ext.json", ".gitkeep"}
 
 # 1.2章のCNN内部キー。これらが成果物に現れたら生データを持ち込んでいる。
@@ -50,6 +50,22 @@ def main() -> int:
         doc = json.loads(text)
         if set(doc) - {"schema", "generated_at", "us"}:
             problems.append(f"data/fg.json に想定外のトップレベルキー: {sorted(set(doc))}")
+
+    # 長い推移: 置いてよいのは (日付, 総合スコア) の列だけ
+    hist_json = DATA / "fg_history.json"
+    if hist_json.exists():
+        text = hist_json.read_text(encoding="utf-8")
+        for key in FORBIDDEN_KEYS:
+            if key in text:
+                problems.append(f"data/fg_history.json にCNNの内部キー {key!r} が含まれている")
+        doc = json.loads(text)
+        if set(doc) - {"schema", "generated_at", "as_of", "us"}:
+            problems.append(f"data/fg_history.json に想定外のトップレベルキー: {sorted(set(doc))}")
+        for row in doc.get("us") or []:
+            if not (isinstance(row, list) and len(row) == 2 and isinstance(row[0], str)
+                    and isinstance(row[1], (int, float))):
+                problems.append(f"data/fg_history.json の行が (日付, スコア) ではない: {row!r}")
+                break
 
     ext_json = DATA / "ext.json"
     if ext_json.exists():

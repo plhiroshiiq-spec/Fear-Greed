@@ -160,11 +160,13 @@ def test_no_raw_cnn_payload_is_written(tmp_path, five_days):
     _, payload = five_days
     build_json.run(tmp_path, session=OkSession(payload), sleeper=lambda _: None, now=NOW)
     written = sorted(p.name for p in tmp_path.iterdir())
-    assert written == ["failure_state.json", "fg.json", "history_us.csv"]
+    # fg_history.json は SUMI DECK の詳細チャート用の長い推移(日付と総合スコアだけ)
+    assert written == ["failure_state.json", "fg.json", "fg_history.json", "history_us.csv"]
 
-    text = (tmp_path / "fg.json").read_text(encoding="utf-8")
-    for cnn_key in ("fear_and_greed_historical", "market_momentum_sp125", "put_call_options"):
-        assert cnn_key not in text
+    for name in ("fg.json", "fg_history.json"):
+        text = (tmp_path / name).read_text(encoding="utf-8")
+        for cnn_key in ("fear_and_greed_historical", "market_momentum_sp125", "put_call_options"):
+            assert cnn_key not in text
 
 
 # --- 実行(失敗系。4章 手順3〜4) -----------------------------------------
