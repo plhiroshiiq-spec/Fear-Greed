@@ -1,66 +1,62 @@
 {
   "schema": 2,
-  "generated_at": "2026-09-23T06:47:59+09:00",
+  "generated_at": "2026-09-24T00:39:53+09:00",
   "us": {
     "source": "cnn",
-    "as_of": "2026-09-22",
-    "score": 35.26,
+    "as_of": "2026-09-23",
+    "score": 36.74,
     "rating": "fear",
-    "prev_close": 33.71,
-    "w1": 27.97,
+    "prev_close": 35.23,
+    "w1": 27.31,
     "m1": 54.66,
-    "y1": 66.51,
-    "delta": 1.55,
-    "streak": 4,
+    "y1": 56.77,
+    "delta": 1.51,
+    "streak": 5,
     "components": [
       {
         "key": "momentum",
         "name_ja": "モメンタム",
-        "score": 40.0,
-        "raw": 4.9804
+        "score": 34.2,
+        "raw": 4.3291
       },
       {
         "key": "strength",
         "name_ja": "株価の強さ",
-        "score": 2.4,
-        "raw": -4.0738
+        "score": 0.4,
+        "raw": -4.5411
       },
       {
         "key": "breadth",
         "name_ja": "市場の幅",
         "score": 0.0,
-        "raw": 509.2754
+        "raw": 465.3561
       },
       {
         "key": "put_call",
         "name_ja": "プット/コール",
-        "score": 48.4,
-        "raw": 0.7202
+        "score": 57.0,
+        "raw": 0.7079
       },
       {
         "key": "volatility",
         "name_ja": "ボラティリティ",
         "score": 50.0,
-        "raw": 14.21
+        "raw": 14.58
       },
       {
         "key": "junk_bond",
         "name_ja": "ジャンク債需要",
-        "score": 47.8,
-        "raw": 1.2499
+        "score": 55.8,
+        "raw": 1.2336
       },
       {
         "key": "safe_haven",
         "name_ja": "安全資産需要",
-        "score": 58.2,
-        "raw": 3.4801
+        "score": 60.4,
+        "raw": 3.6143
       }
     ],
     "history": [
-      [
-        "2025-09-22",
-        66.51
-      ],
       [
         "2025-09-23",
         56.77
@@ -1055,11 +1051,15 @@
       ],
       [
         "2026-09-21",
-        33.71
+        34.17
       ],
       [
         "2026-09-22",
-        35.26
+        35.23
+      ],
+      [
+        "2026-09-23",
+        36.74
       ]
     ],
     "stale": false
