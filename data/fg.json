@@ -1,66 +1,62 @@
 {
   "schema": 2,
-  "generated_at": "2026-09-24T06:47:00+09:00",
+  "generated_at": "2026-09-25T00:39:11+09:00",
   "us": {
     "source": "cnn",
-    "as_of": "2026-09-23",
-    "score": 34.69,
+    "as_of": "2026-09-24",
+    "score": 33.71,
     "rating": "fear",
-    "prev_close": 35.23,
-    "w1": 27.31,
-    "m1": 54.66,
-    "y1": 56.77,
-    "delta": -0.54,
-    "streak": -1,
+    "prev_close": 34.69,
+    "w1": 28.29,
+    "m1": 54.97,
+    "y1": 54.57,
+    "delta": -0.98,
+    "streak": -2,
     "components": [
       {
         "key": "momentum",
         "name_ja": "モメンタム",
-        "score": 31.8,
-        "raw": 4.0626
+        "score": 29.0,
+        "raw": 3.5027
       },
       {
         "key": "strength",
         "name_ja": "株価の強さ",
         "score": 0.0,
-        "raw": -4.6992
+        "raw": -5.3724
       },
       {
         "key": "breadth",
         "name_ja": "市場の幅",
         "score": 0.0,
-        "raw": 459.1934
+        "raw": 399.5474
       },
       {
         "key": "put_call",
         "name_ja": "プット/コール",
-        "score": 49.0,
-        "raw": 0.7184
+        "score": 53.8,
+        "raw": 0.7114
       },
       {
         "key": "volatility",
         "name_ja": "ボラティリティ",
         "score": 50.0,
-        "raw": 15.18
+        "raw": 16.15
       },
       {
         "key": "junk_bond",
         "name_ja": "ジャンク債需要",
-        "score": 53.2,
-        "raw": 1.2388
+        "score": 57.2,
+        "raw": 1.2305
       },
       {
         "key": "safe_haven",
         "name_ja": "安全資産需要",
-        "score": 58.8,
-        "raw": 3.5405
+        "score": 47.4,
+        "raw": 2.6269
       }
     ],
     "history": [
-      [
-        "2025-09-23",
-        56.77
-      ],
       [
         "2025-09-24",
         54.57
@@ -1055,11 +1051,15 @@
       ],
       [
         "2026-09-22",
-        35.23
+        35.03
       ],
       [
         "2026-09-23",
         34.69
+      ],
+      [
+        "2026-09-24",
+        33.71
       ]
     ],
     "stale": false
