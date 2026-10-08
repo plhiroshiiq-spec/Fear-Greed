@@ -1,66 +1,62 @@
 {
   "schema": 2,
-  "generated_at": "2026-10-08T06:53:08+09:00",
+  "generated_at": "2026-10-09T00:44:21+09:00",
   "us": {
     "source": "cnn",
-    "as_of": "2026-10-07",
-    "score": 44.6,
+    "as_of": "2026-10-08",
+    "score": 40.8,
     "rating": "fear",
-    "prev_close": 47.2,
-    "w1": 30.26,
-    "m1": 45.23,
-    "y1": 51.86,
-    "delta": -2.6,
-    "streak": -1,
+    "prev_close": 44.54,
+    "w1": 28.97,
+    "m1": 39.14,
+    "y1": 52.94,
+    "delta": -3.74,
+    "streak": -2,
     "components": [
       {
         "key": "momentum",
         "name_ja": "モメンタム",
-        "score": 63.6,
-        "raw": 4.0598
+        "score": 52.8,
+        "raw": 3.5883
       },
       {
         "key": "strength",
         "name_ja": "株価の強さ",
-        "score": 1.8,
-        "raw": -8.8773
+        "score": 2.6,
+        "raw": -8.7135
       },
       {
         "key": "breadth",
         "name_ja": "市場の幅",
-        "score": 2.4,
-        "raw": 151.6158
+        "score": 2.8,
+        "raw": 137.7334
       },
       {
         "key": "put_call",
         "name_ja": "プット/コール",
-        "score": 30.4,
-        "raw": 0.7615
+        "score": 35.0,
+        "raw": 0.7455
       },
       {
         "key": "volatility",
         "name_ja": "ボラティリティ",
         "score": 50.0,
-        "raw": 15.08
+        "raw": 15.56
       },
       {
         "key": "junk_bond",
         "name_ja": "ジャンク債需要",
-        "score": 93.2,
-        "raw": 1.1431
+        "score": 89.0,
+        "raw": 1.1541
       },
       {
         "key": "safe_haven",
         "name_ja": "安全資産需要",
-        "score": 70.8,
-        "raw": 4.7129
+        "score": 53.4,
+        "raw": 3.4905
       }
     ],
     "history": [
-      [
-        "2025-10-07",
-        51.86
-      ],
       [
         "2025-10-08",
         52.94
@@ -1055,11 +1051,15 @@
       ],
       [
         "2026-10-06",
-        47.2
+        46.8
       ],
       [
         "2026-10-07",
-        44.6
+        44.54
+      ],
+      [
+        "2026-10-08",
+        40.8
       ]
     ],
     "stale": false
