@@ -1,59 +1,59 @@
 {
   "schema": 2,
-  "generated_at": "2026-10-09T00:44:21+09:00",
+  "generated_at": "2026-10-09T06:53:34+09:00",
   "us": {
     "source": "cnn",
     "as_of": "2026-10-08",
-    "score": 40.8,
+    "score": 38.11,
     "rating": "fear",
     "prev_close": 44.54,
     "w1": 28.97,
     "m1": 39.14,
     "y1": 52.94,
-    "delta": -3.74,
+    "delta": -6.43,
     "streak": -2,
     "components": [
       {
         "key": "momentum",
         "name_ja": "モメンタム",
-        "score": 52.8,
-        "raw": 3.5883
+        "score": 49.8,
+        "raw": 3.4695
       },
       {
         "key": "strength",
         "name_ja": "株価の強さ",
         "score": 2.6,
-        "raw": -8.7135
+        "raw": -8.7552
       },
       {
         "key": "breadth",
         "name_ja": "市場の幅",
         "score": 2.8,
-        "raw": 137.7334
+        "raw": 167.1101
       },
       {
         "key": "put_call",
         "name_ja": "プット/コール",
-        "score": 35.0,
-        "raw": 0.7455
+        "score": 31.0,
+        "raw": 0.7583
       },
       {
         "key": "volatility",
         "name_ja": "ボラティリティ",
         "score": 50.0,
-        "raw": 15.56
+        "raw": 15.41
       },
       {
         "key": "junk_bond",
         "name_ja": "ジャンク債需要",
-        "score": 89.0,
-        "raw": 1.1541
+        "score": 84.0,
+        "raw": 1.1641
       },
       {
         "key": "safe_haven",
         "name_ja": "安全資産需要",
-        "score": 53.4,
-        "raw": 3.4905
+        "score": 46.4,
+        "raw": 2.9368
       }
     ],
     "history": [
@@ -1059,7 +1059,7 @@
       ],
       [
         "2026-10-08",
-        40.8
+        38.11
       ]
     ],
     "stale": false
