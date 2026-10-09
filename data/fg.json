@@ -1,66 +1,62 @@
 {
   "schema": 2,
-  "generated_at": "2026-10-09T06:53:34+09:00",
+  "generated_at": "2026-10-10T00:43:38+09:00",
   "us": {
     "source": "cnn",
-    "as_of": "2026-10-08",
-    "score": 38.11,
+    "as_of": "2026-10-09",
+    "score": 44.26,
     "rating": "fear",
-    "prev_close": 44.54,
-    "w1": 28.97,
-    "m1": 39.14,
-    "y1": 52.94,
-    "delta": -6.43,
-    "streak": -2,
+    "prev_close": 37.89,
+    "w1": 39.97,
+    "m1": 38.2,
+    "y1": 48.63,
+    "delta": 6.37,
+    "streak": 1,
     "components": [
       {
         "key": "momentum",
         "name_ja": "モメンタム",
-        "score": 49.8,
-        "raw": 3.4695
+        "score": 65.2,
+        "raw": 3.8067
       },
       {
         "key": "strength",
         "name_ja": "株価の強さ",
-        "score": 2.6,
-        "raw": -8.7552
+        "score": 6.0,
+        "raw": -8.5603
       },
       {
         "key": "breadth",
         "name_ja": "市場の幅",
-        "score": 2.8,
-        "raw": 167.1101
+        "score": 3.2,
+        "raw": 192.4073
       },
       {
         "key": "put_call",
         "name_ja": "プット/コール",
-        "score": 31.0,
-        "raw": 0.7583
+        "score": 37.6,
+        "raw": 0.7381
       },
       {
         "key": "volatility",
         "name_ja": "ボラティリティ",
         "score": 50.0,
-        "raw": 15.41
+        "raw": 14.92
       },
       {
         "key": "junk_bond",
         "name_ja": "ジャンク債需要",
-        "score": 84.0,
-        "raw": 1.1641
+        "score": 87.6,
+        "raw": 1.1555
       },
       {
         "key": "safe_haven",
         "name_ja": "安全資産需要",
-        "score": 46.4,
-        "raw": 2.9368
+        "score": 59.8,
+        "raw": 3.9227
       }
     ],
     "history": [
-      [
-        "2025-10-08",
-        52.94
-      ],
       [
         "2025-10-09",
         48.63
@@ -1055,11 +1051,15 @@
       ],
       [
         "2026-10-07",
-        44.54
+        42.14
       ],
       [
         "2026-10-08",
-        38.11
+        37.89
+      ],
+      [
+        "2026-10-09",
+        44.26
       ]
     ],
     "stale": false
