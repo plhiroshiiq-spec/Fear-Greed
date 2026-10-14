@@ -1,66 +1,62 @@
 {
   "schema": 2,
-  "generated_at": "2026-10-14T07:04:23+09:00",
+  "generated_at": "2026-10-15T01:03:20+09:00",
   "us": {
     "source": "cnn",
-    "as_of": "2026-10-13",
-    "score": 44.74,
+    "as_of": "2026-10-14",
+    "score": 35.23,
     "rating": "fear",
-    "prev_close": 45.74,
-    "w1": 46.8,
-    "m1": 32.69,
-    "y1": 29.74,
-    "delta": -1.0,
-    "streak": -2,
+    "prev_close": 44.74,
+    "w1": 42.14,
+    "m1": 30.97,
+    "y1": 28.29,
+    "delta": -9.51,
+    "streak": -3,
     "components": [
       {
         "key": "momentum",
         "name_ja": "モメンタム",
-        "score": 68.0,
-        "raw": 3.722
+        "score": 39.0,
+        "raw": 2.671
       },
       {
         "key": "strength",
         "name_ja": "株価の強さ",
-        "score": 9.6,
-        "raw": -8.1085
+        "score": 10.2,
+        "raw": -8.1638
       },
       {
         "key": "breadth",
         "name_ja": "市場の幅",
-        "score": 6.0,
-        "raw": 241.7749
+        "score": 7.0,
+        "raw": 236.8075
       },
       {
         "key": "put_call",
         "name_ja": "プット/コール",
-        "score": 32.8,
-        "raw": 0.7527
+        "score": 23.4,
+        "raw": 0.7753
       },
       {
         "key": "volatility",
         "name_ja": "ボラティリティ",
         "score": 50.0,
-        "raw": 15.27
+        "raw": 16.17
       },
       {
         "key": "junk_bond",
         "name_ja": "ジャンク債需要",
-        "score": 75.2,
-        "raw": 1.1719
+        "score": 65.6,
+        "raw": 1.1872
       },
       {
         "key": "safe_haven",
         "name_ja": "安全資産需要",
-        "score": 71.6,
-        "raw": 4.7083
+        "score": 52.4,
+        "raw": 3.3773
       }
     ],
     "history": [
-      [
-        "2025-10-13",
-        29.74
-      ],
       [
         "2025-10-14",
         28.29
@@ -1055,11 +1051,15 @@
       ],
       [
         "2026-10-12",
-        45.74
+        46.34
       ],
       [
         "2026-10-13",
         44.74
+      ],
+      [
+        "2026-10-14",
+        35.23
       ]
     ],
     "stale": false
