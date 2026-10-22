@@ -1,59 +1,59 @@
 {
   "schema": 2,
-  "generated_at": "2026-10-22T09:11:01+09:00",
+  "generated_at": "2026-10-23T04:19:59+09:00",
   "us": {
     "source": "cnn",
-    "as_of": "2026-10-21",
-    "score": 31.37,
-    "rating": "fear",
-    "prev_close": 27.2,
-    "w1": 26.66,
-    "m1": 34.17,
-    "y1": 28.54,
-    "delta": 4.17,
-    "streak": 2,
+    "as_of": "2026-10-22",
+    "score": 17.58,
+    "rating": "extreme fear",
+    "prev_close": 31.37,
+    "w1": 30.34,
+    "m1": 35.03,
+    "y1": 26.37,
+    "delta": -13.79,
+    "streak": -1,
     "components": [
       {
         "key": "momentum",
         "name_ja": "モメンタム",
-        "score": 47.0,
-        "raw": 2.677
+        "score": 20.0,
+        "raw": 1.1268
       },
       {
         "key": "strength",
         "name_ja": "株価の強さ",
-        "score": 15.2,
-        "raw": -7.6507
+        "score": 17.6,
+        "raw": -6.9855
       },
       {
         "key": "breadth",
         "name_ja": "市場の幅",
-        "score": 18.0,
-        "raw": 387.1965
+        "score": 20.2,
+        "raw": 411.8644
       },
       {
         "key": "put_call",
         "name_ja": "プット/コール",
-        "score": 19.6,
-        "raw": 0.8093
+        "score": 19.4,
+        "raw": 0.8118
       },
       {
         "key": "volatility",
         "name_ja": "ボラティリティ",
-        "score": 50.0,
-        "raw": 16.68
+        "score": 7.7,
+        "raw": 20.23
       },
       {
         "key": "junk_bond",
         "name_ja": "ジャンク債需要",
-        "score": 49.8,
-        "raw": 1.2121
+        "score": 28.0,
+        "raw": 1.2608
       },
       {
         "key": "safe_haven",
         "name_ja": "安全資産需要",
-        "score": 20.0,
-        "raw": 0.1789
+        "score": 9.2,
+        "raw": -2.644
       }
     ],
     "history": [
@@ -1051,11 +1051,15 @@
       ],
       [
         "2026-10-20",
-        27.2
+        29.57
       ],
       [
         "2026-10-21",
         31.37
+      ],
+      [
+        "2026-10-22",
+        17.58
       ]
     ],
     "stale": false
