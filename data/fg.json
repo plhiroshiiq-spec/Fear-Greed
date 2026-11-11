@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "generated_at": "2026-11-11T06:22:16+09:00",
+  "generated_at": "2026-11-11T10:28:06+09:00",
   "us": {
     "source": "cnn",
     "as_of": "2026-11-10",
@@ -23,31 +23,31 @@
         "key": "strength",
         "name_ja": "株価の強さ",
         "score": 47.6,
-        "raw": -3.0406
+        "raw": -3.0404
       },
       {
         "key": "breadth",
         "name_ja": "市場の幅",
         "score": 50.2,
-        "raw": 636.7807
+        "raw": 636.9679
       },
       {
         "key": "put_call",
         "name_ja": "プット/コール",
         "score": 16.2,
-        "raw": 0.8514
+        "raw": 0.8517
       },
       {
         "key": "volatility",
         "name_ja": "ボラティリティ",
         "score": 50.0,
-        "raw": 19.49
+        "raw": 19.46
       },
       {
         "key": "junk_bond",
         "name_ja": "ジャンク債需要",
-        "score": 46.0,
-        "raw": 1.2196
+        "score": 46.4,
+        "raw": 1.2194
       },
       {
         "key": "safe_haven",
@@ -57,10 +57,6 @@
       }
     ],
     "history": [
-      [
-        "2025-11-10",
-        29.94
-      ],
       [
         "2025-11-11",
         30.46
