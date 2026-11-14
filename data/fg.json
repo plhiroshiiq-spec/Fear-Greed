@@ -1,16 +1,16 @@
 {
   "schema": 2,
-  "generated_at": "2026-11-14T06:28:52+09:00",
+  "generated_at": "2026-11-14T10:44:21+09:00",
   "us": {
     "source": "cnn",
     "as_of": "2026-11-13",
-    "score": 38.63,
+    "score": 38.6,
     "rating": "fear",
     "prev_close": 39.83,
     "w1": 24.35,
     "m1": 45.6,
     "y1": 24.54,
-    "delta": -1.2,
+    "delta": -1.23,
     "streak": -1,
     "components": [
       {
@@ -34,20 +34,20 @@
       {
         "key": "put_call",
         "name_ja": "プット/コール",
-        "score": 25.8,
-        "raw": 0.8038
+        "score": 25.6,
+        "raw": 0.8043
       },
       {
         "key": "volatility",
         "name_ja": "ボラティリティ",
         "score": 50.0,
-        "raw": 19.42
+        "raw": 19.3
       },
       {
         "key": "junk_bond",
         "name_ja": "ジャンク債需要",
-        "score": 62.2,
-        "raw": 1.1885
+        "score": 62.4,
+        "raw": 1.1878
       },
       {
         "key": "safe_haven",
@@ -57,10 +57,6 @@
       }
     ],
     "history": [
-      [
-        "2025-11-13",
-        24.54
-      ],
       [
         "2025-11-14",
         22.06
@@ -1059,7 +1055,7 @@
       ],
       [
         "2026-11-13",
-        38.63
+        38.6
       ]
     ],
     "stale": false
