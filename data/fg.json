@@ -1,66 +1,62 @@
 {
   "schema": 2,
-  "generated_at": "2026-11-14T10:44:21+09:00",
+  "generated_at": "2026-11-17T08:47:19+09:00",
   "us": {
     "source": "cnn",
-    "as_of": "2026-11-13",
-    "score": 38.6,
+    "as_of": "2026-11-16",
+    "score": 31.02,
     "rating": "fear",
-    "prev_close": 39.83,
-    "w1": 24.35,
-    "m1": 45.6,
-    "y1": 24.54,
-    "delta": -1.23,
-    "streak": -1,
+    "prev_close": 38.6,
+    "w1": 31.51,
+    "m1": 18.21,
+    "y1": 22.06,
+    "delta": -7.58,
+    "streak": -2,
     "components": [
       {
         "key": "momentum",
         "name_ja": "モメンタム",
-        "score": 14.6,
-        "raw": -0.4295
+        "score": 9.2,
+        "raw": -2.3463
       },
       {
         "key": "strength",
         "name_ja": "株価の強さ",
-        "score": 44.2,
-        "raw": -3.323
+        "score": 41.4,
+        "raw": -3.6484
       },
       {
         "key": "breadth",
         "name_ja": "市場の幅",
-        "score": 52.2,
-        "raw": 643.6542
+        "score": 49.4,
+        "raw": 619.4873
       },
       {
         "key": "put_call",
         "name_ja": "プット/コール",
-        "score": 25.6,
-        "raw": 0.8043
+        "score": 19.6,
+        "raw": 0.8376
       },
       {
         "key": "volatility",
         "name_ja": "ボラティリティ",
-        "score": 50.0,
-        "raw": 19.3
+        "score": 33.3,
+        "raw": 22.91
       },
       {
         "key": "junk_bond",
         "name_ja": "ジャンク債需要",
-        "score": 62.4,
-        "raw": 1.1878
+        "score": 52.4,
+        "raw": 1.204
       },
       {
         "key": "safe_haven",
         "name_ja": "安全資産需要",
-        "score": 21.2,
-        "raw": -1.5595
+        "score": 11.8,
+        "raw": -3.7307
       }
     ],
     "history": [
-      [
-        "2025-11-14",
-        22.06
-      ],
       [
         "2025-11-17",
         11.64
@@ -1051,11 +1047,15 @@
       ],
       [
         "2026-11-12",
-        39.83
+        40.34
       ],
       [
         "2026-11-13",
         38.6
+      ],
+      [
+        "2026-11-16",
+        31.02
       ]
     ],
     "stale": false
