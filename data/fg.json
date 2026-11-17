@@ -1,59 +1,59 @@
 {
   "schema": 2,
-  "generated_at": "2026-11-17T13:10:08+09:00",
+  "generated_at": "2026-11-18T08:02:04+09:00",
   "us": {
     "source": "cnn",
-    "as_of": "2026-11-16",
-    "score": 31.02,
+    "as_of": "2026-11-17",
+    "score": 25.23,
     "rating": "fear",
-    "prev_close": 38.6,
-    "w1": 31.51,
+    "prev_close": 31.02,
+    "w1": 37.37,
     "m1": 18.21,
-    "y1": 22.06,
-    "delta": -7.58,
-    "streak": -2,
+    "y1": 11.64,
+    "delta": -5.79,
+    "streak": -3,
     "components": [
       {
         "key": "momentum",
         "name_ja": "モメンタム",
-        "score": 9.2,
-        "raw": -2.3463
+        "score": 5.2,
+        "raw": -3.3384
       },
       {
         "key": "strength",
         "name_ja": "株価の強さ",
-        "score": 41.4,
-        "raw": -3.6484
+        "score": 36.6,
+        "raw": -4.2958
       },
       {
         "key": "breadth",
         "name_ja": "市場の幅",
-        "score": 49.4,
-        "raw": 619.4873
+        "score": 44.6,
+        "raw": 567.7942
       },
       {
         "key": "put_call",
         "name_ja": "プット/コール",
-        "score": 19.6,
-        "raw": 0.8376
+        "score": 15.0,
+        "raw": 0.861
       },
       {
         "key": "volatility",
         "name_ja": "ボラティリティ",
-        "score": 33.3,
-        "raw": 22.91
+        "score": 17.8,
+        "raw": 25.46
       },
       {
         "key": "junk_bond",
         "name_ja": "ジャンク債需要",
-        "score": 52.4,
-        "raw": 1.204
+        "score": 50.0,
+        "raw": 1.2091
       },
       {
         "key": "safe_haven",
         "name_ja": "安全資産需要",
-        "score": 11.8,
-        "raw": -3.7307
+        "score": 7.2,
+        "raw": -5.5296
       }
     ],
     "history": [
@@ -1051,11 +1051,15 @@
       ],
       [
         "2026-11-13",
-        38.6
+        37.37
       ],
       [
         "2026-11-16",
         31.02
+      ],
+      [
+        "2026-11-17",
+        25.23
       ]
     ],
     "stale": false
